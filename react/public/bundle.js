@@ -24056,6 +24056,10 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
+	var _MainLogin = __webpack_require__(220);
+
+	var _MainLogin2 = _interopRequireDefault(_MainLogin);
+
 	var _reactRouter = __webpack_require__(159);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24066,7 +24070,8 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _Main2.default },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'home', component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _MainLogin2.default })
 	  )
 	);
 
@@ -24155,6 +24160,10 @@
 
 	var _reBase2 = _interopRequireDefault(_reBase);
 
+	var _Uploader = __webpack_require__(219);
+
+	var _Uploader2 = _interopRequireDefault(_Uploader);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24185,7 +24194,6 @@
 	      this.firebaseRef = new Firebase("https://on-demand-2.firebaseio.com/");
 	      this.firebaseRef.on("child_added", function (dataSnapshot) {
 	        var nextData = this.state.post.concat(dataSnapshot.val());
-	        //console.log(dataSnapshot.val());
 	        this.setState({
 	          post: nextData
 	        });
@@ -24677,7 +24685,6 @@
 	  _createClass(ContentList, [{
 	    key: "render",
 	    value: function render() {
-	      //console.log("CIEEE",this.props.post)
 	      var post = this.props.post.map(function (post, index) {
 	        return _react2.default.createElement(
 	          "div",
@@ -24689,7 +24696,13 @@
 	            _react2.default.createElement(
 	              "h5",
 	              null,
-	              post.name
+	              post.name,
+	              "        ",
+	              _react2.default.createElement("i", { className: "fa fa-star", "aria-hidden": "true" }),
+	              _react2.default.createElement("i", { className: "fa fa-star", "aria-hidden": "true" }),
+	              _react2.default.createElement("i", { className: "fa fa-star-o", "aria-hidden": "true" }),
+	              _react2.default.createElement("i", { className: "fa fa-star-o", "aria-hidden": "true" }),
+	              _react2.default.createElement("i", { className: "fa fa-star-o", "aria-hidden": "true" })
 	            ),
 	            _react2.default.createElement(
 	              "h6",
@@ -24698,7 +24711,62 @@
 	                "span",
 	                { className: "location semi-bold" },
 	                _react2.default.createElement("i", { className: "fa fa-map-marker" }),
-	                " NYC, New York"
+	                " ",
+	                post.place
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "card-footer card-title clearfix" },
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              _react2.default.createElement(
+	                "strong",
+	                null,
+	                post.title
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "ul",
+	              { className: "reactions" },
+	              _react2.default.createElement(
+	                "li",
+	                null,
+	                _react2.default.createElement(
+	                  "a",
+	                  { href: "#" },
+	                  post.comments,
+	                  " ",
+	                  _react2.default.createElement(
+	                    "i",
+	                    { className: "fa fa-comment-o" },
+	                    "   "
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                null,
+	                _react2.default.createElement(
+	                  "a",
+	                  { href: "#" },
+	                  _react2.default.createElement(
+	                    "i",
+	                    { className: "fa fa-heart-o" },
+	                    "   "
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "li",
+	                null,
+	                _react2.default.createElement(
+	                  "a",
+	                  { href: "#" },
+	                  _react2.default.createElement("i", { className: "fa fa-share-alt" })
+	                )
 	              )
 	            )
 	          ),
@@ -24713,63 +24781,11 @@
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "card-content" },
-	            _react2.default.createElement(
-	              "ul",
-	              { className: "buttons " },
-	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  _react2.default.createElement("i", { className: "fa fa-expand" })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  _react2.default.createElement("i", { className: "fa fa-heart-o" })
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "div",
 	            { className: "card-footer clearfix" },
 	            _react2.default.createElement(
 	              "div",
 	              { className: "time" },
 	              post.time
-	            ),
-	            _react2.default.createElement(
-	              "ul",
-	              { className: "reactions" },
-	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  post.comments,
-	                  " ",
-	                  _react2.default.createElement("i", { className: "fa fa-comment-o" })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "li",
-	                null,
-	                _react2.default.createElement(
-	                  "a",
-	                  { href: "#" },
-	                  post.likes,
-	                  "K ",
-	                  _react2.default.createElement("i", { className: "fa fa-heart-o" })
-	                )
-	              )
 	            )
 	          )
 	        );
@@ -25615,6 +25631,293 @@
 
 	module.exports = Firebase;
 
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Uploader = function (_React$Component) {
+	  _inherits(Uploader, _React$Component);
+
+	  function Uploader() {
+	    _classCallCheck(this, Uploader);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Uploader).apply(this, arguments));
+	  }
+
+	  _createClass(Uploader, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "progress",
+	          { className: "upload", value: "0", max: "100", id: "uploader" },
+	          "0%"
+	        ),
+	        _react2.default.createElement("input", { className: "upload", type: "file", value: "upload", id: "fileButton" })
+	      );
+	    }
+	  }]);
+
+	  return Uploader;
+	}(_react2.default.Component);
+
+	exports.default = Uploader;
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Loginform = __webpack_require__(221);
+
+	var _Loginform2 = _interopRequireDefault(_Loginform);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MainLogin = function (_React$Component) {
+	  _inherits(MainLogin, _React$Component);
+
+	  function MainLogin() {
+	    _classCallCheck(this, MainLogin);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MainLogin).apply(this, arguments));
+	  }
+
+	  _createClass(MainLogin, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'main-login' },
+	        _react2.default.createElement('div', { className: 'col-md-4' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-md-4' },
+	          _react2.default.createElement(_Loginform2.default, null)
+	        ),
+	        _react2.default.createElement('div', { className: 'col-md-4' })
+	      );
+	    }
+	  }]);
+
+	  return MainLogin;
+	}(_react2.default.Component);
+
+	exports.default = MainLogin;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(159);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LoginForm = function (_React$Component) {
+	  _inherits(LoginForm, _React$Component);
+
+	  function LoginForm() {
+	    _classCallCheck(this, LoginForm);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginForm).apply(this, arguments));
+	  }
+
+	  _createClass(LoginForm, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'login' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'login-wrapper' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'login-container bg-white' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40' },
+	              _react2.default.createElement('img', { src: 'assets/img/logo.png', alt: 'logo', 'data-src': 'assets/img/logo.png', 'data-src-retina': 'assets/img/logo_2x.png', width: '78', height: '22' }),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'p-t-35' },
+	                'Sign into your pages account'
+	              ),
+	              _react2.default.createElement(
+	                'form',
+	                { id: 'form-login', className: 'p-t-15', role: 'form', action: 'index.html' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'form-group form-group-default' },
+	                  _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    'Login'
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'controls' },
+	                    _react2.default.createElement('input', { type: 'text', name: 'username', placeholder: 'User Name', className: 'form-control', required: true, ref: function ref(_ref) {
+	                        return _this2.usernameRef = _ref;
+	                      } })
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'form-group form-group-default' },
+	                  _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    'Password'
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'controls' },
+	                    _react2.default.createElement('input', { type: 'password', className: 'form-control', name: 'password', placeholder: 'Credentials', required: true, ref: function ref(_ref2) {
+	                        return _this2.passwordRef = _ref2;
+	                      } })
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-6 no-padding' },
+	                    _react2.default.createElement(
+	                      'div',
+	                      { className: 'checkbox ' },
+	                      _react2.default.createElement('input', { type: 'checkbox', value: '1', id: 'checkbox1' }),
+	                      _react2.default.createElement(
+	                        'label',
+	                        { 'for': 'checkbox1' },
+	                        'Keep Me Signed in'
+	                      )
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-6 text-right' },
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: 'register.html', 'class': 'text-info small' },
+	                      'Don\'t have an account? Register'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: 'home' },
+	                  _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn btn-primary btn-cons m-t-10 log_in', type: 'submit' },
+	                    'Sign in'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'pull-bottom sm-pull-bottom' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'm-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-sm-9 no-padding m-t-10' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      _react2.default.createElement(
+	                        'small',
+	                        null,
+	                        'Create a pages account. If you have a facebook account, log into it for this process. Sign in with ',
+	                        _react2.default.createElement(
+	                          'a',
+	                          { href: '#', className: 'text-info' },
+	                          'Facebook'
+	                        ),
+	                        ' or ',
+	                        _react2.default.createElement(
+	                          'a',
+	                          { href: '#', className: 'text-info' },
+	                          'Google'
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LoginForm;
+	}(_react2.default.Component);
+
+	exports.default = LoginForm;
 
 /***/ }
 /******/ ]);

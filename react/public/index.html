@@ -33,9 +33,36 @@
         apiKey: "AIzaSyB5y4svZlc0D7XHzBdQYMhQrLC3iSWlHq0",
         authDomain: "on-demand-73cc4.firebaseapp.com",
         databaseURL: "https://on-demand-73cc4.firebaseio.com",
-        storageBucket: "",
+        storageBucket: "gs://on-demand-2.appspot.com"
       };
       firebase.initializeApp(config);
+
+      var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+
+      // fileButton.addEventListener('change',funtion(e) {
+      //
+      //   var file = e.target.files[0];
+      //
+      //   var storageRef = firebase.storage().ref('images/' + file.name);
+      //
+      //   var task = storageRef.put(file);
+      //
+      //   task.on('state_changed',
+      //     function progress(snapshot) {
+      //       var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      //       uploader.value = percentage;
+      //     },
+      //
+      //     function error(err) {
+      //
+      //     },
+      //
+      //     function complete() {
+      //
+      //     }
+      //   );
+      // });
     </script>
     <script src="bundle.js"></script>
     <script src="https://use.fontawesome.com/308633fedc.js"></script>
