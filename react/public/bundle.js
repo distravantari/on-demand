@@ -24614,10 +24614,10 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'page-content-wrapper ' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'content' },
+	          { className: 'page-content-wrapper' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'social-wrapper' },
@@ -24626,15 +24626,11 @@
 	              { className: 'social ', 'data-pages': 'social' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20' },
+	                { className: 'feed' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'feed' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'day', 'data-social': 'day' },
-	                    _react2.default.createElement(_ContentList2.default, { post: this.props.post })
-	                  )
+	                  { className: 'day', 'data-social': 'day' },
+	                  _react2.default.createElement(_ContentList2.default, { post: this.props.post })
 	                )
 	              )
 	            )
@@ -24770,12 +24766,13 @@
 	              )
 	            )
 	          ),
+	          _react2.default.createElement("img", { src: post.pict }),
 	          _react2.default.createElement(
 	            "div",
 	            { className: "card-description" },
 	            _react2.default.createElement(
 	              "p",
-	              null,
+	              { className: "hidepargh" },
 	              post.desc
 	            )
 	          ),

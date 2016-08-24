@@ -1,6 +1,14 @@
 import React from 'react';
 
 class ContentList extends React.Component {
+  // componentDidMount(ref) {
+  //   const pict = this.pictRef.value;
+  //   var p = document.getElementById("picture");
+  //   if(pict!=null) {
+  //     p.src = pict;
+  //   }
+  // }
+
   render() {
     var post = this.props.post.map(function(post,index){
       return <div className="card share col1" key={index} data-social="item">
@@ -27,8 +35,10 @@ class ContentList extends React.Component {
               <li><a href="#"><i className="fa fa-share-alt"></i></a></li>
             </ul>
           </div>
+          {/*<img id="picture" ref={(ref) => pictRef = post.pict} />*/}
+          <img src={post.pict}/>
           <div className="card-description">
-            <p>{post.desc}</p>
+            <p className="hidepargh">{post.desc}</p>
           </div>
           <div className="card-footer clearfix">
             <div className="time">{post.time}</div>
